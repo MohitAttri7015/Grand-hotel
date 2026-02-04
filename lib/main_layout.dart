@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grand_hotel/Screens/home_screen.dart';
+import 'package:grand_hotel/Screens/search_screen.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/services/auth_service.dart';
 import 'package:iconsax/iconsax.dart';
@@ -15,9 +16,9 @@ class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
 
   final pages = const [
-    HomeScreen(), 
+    HomeScreen(),
     // SearchPage(),
-    // OrdersPage(),
+    // SearchScreen(),
     // ProfilePage(),
   ];
 
@@ -25,8 +26,8 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     final user = authServices.value.currentUser;
     return Scaffold(
-      // ✅ AppBar only for first page
-      appBar: _currentIndex == 0 ? PreferredSize(
+      appBar: _currentIndex == 0
+          ? PreferredSize(
               preferredSize: Size.fromHeight(100),
               child: SafeArea(
                 child: Container(
@@ -93,7 +94,14 @@ class _MainLayoutState extends State<MainLayout> {
                             child: IconButton(
                               padding: EdgeInsets.zero,
                               icon: Icon(Iconsax.search_favorite_1, size: 18),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SearchScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ),
 
@@ -121,7 +129,8 @@ class _MainLayoutState extends State<MainLayout> {
                   ),
                 ),
               ),
-            ) : null,
+            )
+          : null,
 
       body: IndexedStack(index: _currentIndex, children: pages),
 
@@ -129,8 +138,8 @@ class _MainLayoutState extends State<MainLayout> {
         backgroundColor: Colors.white,
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: kSurfaceColor, 
-        unselectedItemColor: thirdTextColor, 
+        selectedItemColor: kSurfaceColor,
+        unselectedItemColor: thirdTextColor,
         selectedLabelStyle: const TextStyle(
           fontFamily: 'Inter_Medium',
           color: kSurfaceColor,
@@ -148,11 +157,11 @@ class _MainLayoutState extends State<MainLayout> {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Iconsax.home_1), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Iconsax.book), label: "My Booking"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_outlined),
-            label: "Explore",
+            icon: Icon(Iconsax.book),
+            label: "My Booking",
           ),
+          BottomNavigationBarItem(icon: Icon(Iconsax.search_favorite), label: "Search"),
           BottomNavigationBarItem(icon: Icon(Iconsax.user), label: "Profile"),
         ],
       ),

@@ -19,10 +19,22 @@ class _MyCrauselState extends State<MyCrausel> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     double viewportFractionWidth;
-    if (screenWidth >= 375) {
+    if(screenWidth >= 1170){
+      viewportFractionWidth = 0.18;
+    }
+    else if (screenWidth >= 940) {
+      viewportFractionWidth = 0.22;
+    }
+    else if (screenWidth >= 700) {
+      viewportFractionWidth = 0.3;
+    } else if (screenWidth >= 600) {
+      viewportFractionWidth = 0.35;
+    } else if (screenWidth >= 500) {
+      viewportFractionWidth = 0.4;
+    } else if (screenWidth >= 375) {
       viewportFractionWidth = 0.58;
     } else {
-      viewportFractionWidth = 0.7;
+      viewportFractionWidth = 0.66;
     }
 
     return SizedBox(

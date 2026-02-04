@@ -197,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "Recomended for you",
+                      "Hotel Near You",
                       style: TextStyle(
                         fontFamily: 'Inter_Medium',
                         fontSize: 15,
@@ -208,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     GestureDetector(
                       onTap: () {},
                       child: Text(
-                        'See All',
+                        'Open Map',
                         style: TextStyle(color: kSurfaceColor),
                       ),
                     ),

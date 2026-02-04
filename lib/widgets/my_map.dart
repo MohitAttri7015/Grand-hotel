@@ -30,19 +30,22 @@ class _MyMapState extends State<MyMap> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 250, // 🔒 Fixed height
-      child: GoogleMap(
-        initialCameraPosition: CameraPosition(target: randomLocation, zoom: 10),
-        markers: {
-          Marker(
-            markerId: const MarkerId('random_place'),
-            position: randomLocation,
-            infoWindow: const InfoWindow(title: 'Random Place'),
-          ),
-        },
-        zoomControlsEnabled: false,
-        myLocationButtonEnabled: false,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: SizedBox(
+        height: 180, 
+        child: GoogleMap(
+          initialCameraPosition: CameraPosition(target: randomLocation, zoom: 10),
+          markers: {
+            Marker(
+              markerId: const MarkerId('random_place'),
+              position: randomLocation,
+              infoWindow: const InfoWindow(title: 'Random Place'),
+            ),
+          },
+          zoomControlsEnabled: false,
+          myLocationButtonEnabled: false,
+        ),
       ),
     );
   }
