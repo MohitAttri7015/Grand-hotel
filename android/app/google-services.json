@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "730604748847",
+    "project_id": "grand-hotel-5adfc",
+    "storage_bucket": "grand-hotel-5adfc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730604748847:android:2630cbf63b37b508af46da",
+        "android_client_info": {
+          "package_name": "com.example.grand_hotel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-yh8zJcsomUrDuEtlzEYUj6GVHZXlRkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
