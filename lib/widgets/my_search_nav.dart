@@ -83,10 +83,8 @@ class MySearchNav extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                       builder: (_) => const DraggableSheet(),
                     );
-                    if (filters != null) {
-                      onFilterApplied(await filters); 
-                    }
-                  },
+                    onFilterApplied(await filters); 
+                                    },
                   child: const Icon(
                     Iconsax.filter,
                     size: 20,
