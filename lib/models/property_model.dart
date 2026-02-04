@@ -210,7 +210,7 @@ class PropertyModel {
         name: "Cozy Studio Apartment",
         location: "Tokyo, Japan",
         pricePerNight: 95,
-        rating: 4.4,
+        rating: 4,
         totalReviews: 58,
         rooms: 1,
         bathrooms: 1,
@@ -221,7 +221,7 @@ class PropertyModel {
         facilities: [
           FacilityCategory(
             name: "Essentials",
-            items: ["Wi-Fi", "Heating", "Kitchenette"],
+            items: ["Free Wifi", "Heating", "Kitchenette"],
           ),
         ],
         reviews: [

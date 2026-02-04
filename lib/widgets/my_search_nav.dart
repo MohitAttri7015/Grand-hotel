@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
+import 'package:grand_hotel/models/filter_data.dart';
+import 'package:grand_hotel/widgets/draggable_sheet.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MySearchNav extends StatelessWidget {
   final ValueChanged<String> onChanged;
-  const MySearchNav({super.key, required this.onChanged});
+  final Function(FilterData) onFilterApplied;
+
+  const MySearchNav({super.key, required this.onChanged, required this.onFilterApplied});
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +75,23 @@ class MySearchNav extends StatelessWidget {
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(
-                  Iconsax.filter,
-                  size: 20,
-                  color: thirdTextColor,
+                child: GestureDetector(
+                  onTap: () async {
+                    final filters = showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => const DraggableSheet(),
+                    );
+                    if (filters != null) {
+                      onFilterApplied(await filters); 
+                    }
+                  },
+                  child: const Icon(
+                    Iconsax.filter,
+                    size: 20,
+                    color: thirdTextColor,
+                  ),
                 ),
               ),
             ],

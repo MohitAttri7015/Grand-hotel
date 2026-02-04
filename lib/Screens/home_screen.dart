@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grand_hotel/Screens/all_property.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/models/property_model.dart';
 import 'package:grand_hotel/widgets/my_crausel.dart';
@@ -115,9 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
-                        'See All',
-                        style: TextStyle(color: kSurfaceColor),
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AllProperty())),
+                        child: Text(
+                          'See All',
+                          style: TextStyle(color: kSurfaceColor),
+                        ),
                       ),
                     ),
                   ],
@@ -147,9 +151,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     GestureDetector(
                       onTap: () {},
-                      child: Text(
-                        'See All',
-                        style: TextStyle(color: kSurfaceColor),
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AllProperty(),
+                          ),
+                        ),
+                        child: Text(
+                          'See All',
+                          style: TextStyle(color: kSurfaceColor),
+                        ),
                       ),
                     ),
                   ],
