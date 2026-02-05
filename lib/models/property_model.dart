@@ -9,7 +9,6 @@ class PropertyModel {
   final String location;
   final double pricePerNight;
   final double rating;
-  final int totalReviews;
   final String description;
   final int rooms;
   final int bathrooms;
@@ -25,7 +24,6 @@ class PropertyModel {
     required this.location,
     required this.pricePerNight,
     required this.rating,
-    required this.totalReviews,
     required this.description,
     required this.rooms,
     required this.bathrooms,
@@ -46,7 +44,6 @@ class PropertyModel {
         location: "Malibu, California",
         pricePerNight: 420,
         rating: 4.8,
-        totalReviews: 128,
         rooms: 4,
         bathrooms: 3,
         description:
@@ -83,7 +80,6 @@ class PropertyModel {
         location: "New York City, USA",
         pricePerNight: 210,
         rating: 4.5,
-        totalReviews: 342,
         rooms: 120,
         bathrooms: 120,
         description:
@@ -117,7 +113,6 @@ class PropertyModel {
         location: "Berlin, Germany",
         pricePerNight: 120,
         rating: 4.6,
-        totalReviews: 96,
         rooms: 2,
         bathrooms: 1,
         description:
@@ -149,7 +144,6 @@ class PropertyModel {
         location: "Manali, India",
         pricePerNight: 180,
         rating: 4.7,
-        totalReviews: 76,
         rooms: 3,
         bathrooms: 2,
         description:
@@ -181,7 +175,6 @@ class PropertyModel {
         location: "Dubai, UAE",
         pricePerNight: 350,
         rating: 4.9,
-        totalReviews: 289,
         rooms: 200,
         bathrooms: 200,
         description:
@@ -211,7 +204,6 @@ class PropertyModel {
         location: "Tokyo, Japan",
         pricePerNight: 95,
         rating: 4,
-        totalReviews: 58,
         rooms: 1,
         bathrooms: 1,
         description:

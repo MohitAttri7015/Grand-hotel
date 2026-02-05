@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:grand_hotel/models/property_model.dart';
 
 class ReviewsList extends StatelessWidget {
+  final bool showAll;
   final List<ReviewModel> reviews;
 
-  const ReviewsList({super.key, required this.reviews});
+  const ReviewsList({super.key, required this.reviews, this.showAll = false});
 
   @override
   Widget build(BuildContext context) {
-    // show only first 2 reviews
-    final visibleReviews = reviews.take(2).toList();
+     final List<ReviewModel> visibleReviews = showAll
+        ? reviews
+        : reviews.take(2).toList();
 
     return Column(
       children: List.generate(visibleReviews.length, (index) {
@@ -23,9 +25,9 @@ class ReviewsList extends StatelessWidget {
               radius: 22,
               backgroundImage: AssetImage(review.profileImage),
             ),
-        
+
             const SizedBox(width: 12),
-        
+
             // Name + Comment
             Expanded(
               child: Column(

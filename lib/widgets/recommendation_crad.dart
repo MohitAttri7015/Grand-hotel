@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:grand_hotel/Screens/property_detail.dart';
 import 'package:grand_hotel/models/property_model.dart';
@@ -114,7 +113,7 @@ class RecommendationCrad extends StatelessWidget {
                             ),
                             const SizedBox(width: 6),
                             Text(
-                              "(${property.totalReviews})",
+                              "(${property.reviews.length})",
                               style: const TextStyle(
                                 fontFamily: 'Inter_Light',
                                 fontSize: 12,

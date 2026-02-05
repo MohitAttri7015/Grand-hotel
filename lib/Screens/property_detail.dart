@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grand_hotel/Screens/all_facilities.dart';
+import 'package:grand_hotel/Screens/all_reviews.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/models/property_model.dart';
 import 'package:grand_hotel/widgets/my_map.dart';
@@ -16,12 +18,14 @@ class PropertyDetail extends StatelessWidget {
     );
 
     return Scaffold(
-       bottomNavigationBar: Container(
+      bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: BoxDecoration(
           color: Colors.white,
-          // ignore: deprecated_member_use
-          border: Border(top: BorderSide(color: thirdTextColor.withOpacity(0.3))),
+          border: Border(
+            // ignore: deprecated_member_use
+            top: BorderSide(color: thirdTextColor.withOpacity(0.3)),
+          ),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),
@@ -70,7 +74,11 @@ class PropertyDetail extends StatelessWidget {
                   },
                   child: Text(
                     'Booking Now',
-                    style: TextStyle(fontFamily: 'Inter_Medium', fontSize: 14, color: Colors.white),
+                    style: TextStyle(
+                      fontFamily: 'Inter_Medium',
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -248,12 +256,22 @@ class PropertyDetail extends StatelessWidget {
                           ),
                         ),
 
-                        Text(
-                          'See All',
-                          style: TextStyle(
-                            fontFamily: 'Inter_Medium',
-                            color: kSurfaceColor,
-                            fontSize: 12,
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllFacilities(
+                                facilities: property.facilities,
+                              ),
+                            ),
+                          ),
+                          child: Text(
+                            'See All',
+                            style: TextStyle(
+                              fontFamily: 'Inter_Medium',
+                              color: kSurfaceColor,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
                       ],
@@ -310,7 +328,9 @@ class PropertyDetail extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
-                        border: Border.all(color: const Color.fromARGB(115, 175, 175, 175))
+                        border: Border.all(
+                          color: const Color.fromARGB(115, 175, 175, 175),
+                        ),
                       ),
                       height: 160,
                       child: Column(
@@ -326,11 +346,18 @@ class PropertyDetail extends StatelessWidget {
                                   color: kSurfaceColor,
                                   size: 20,
                                 ),
-                                SizedBox(width: 5,),
-                                Text(property.location, style: TextStyle(fontFamily: 'Inter_Medium', color: thirdTextColor, fontSize: 15))
+                                SizedBox(width: 5),
+                                Text(
+                                  property.location,
+                                  style: TextStyle(
+                                    fontFamily: 'Inter_Medium',
+                                    color: thirdTextColor,
+                                    fontSize: 15,
+                                  ),
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -348,12 +375,21 @@ class PropertyDetail extends StatelessWidget {
                           ),
                         ),
 
-                        Text(
-                          'See All',
-                          style: TextStyle(
-                            fontFamily: 'Inter_Medium',
-                            color: kSurfaceColor,
-                            fontSize: 12,
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  AllReviews(propertyId: propertyId),
+                            ),
+                          ),
+                          child: Text(
+                            'See All',
+                            style: TextStyle(
+                              fontFamily: 'Inter_Medium',
+                              color: kSurfaceColor,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
                       ],
@@ -361,9 +397,7 @@ class PropertyDetail extends StatelessWidget {
 
                     SizedBox(height: 10),
 
-                    ReviewsList(reviews: property.reviews),
-
-          
+                    ReviewsList(reviews: property.reviews, showAll: false),
                   ],
                 ),
               ),
