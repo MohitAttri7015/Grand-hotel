@@ -18,7 +18,7 @@ class _MainLayoutState extends State<MainLayout> {
   final pages = const [
     HomeScreen(),
     // SearchPage(),
-    // SearchScreen(),
+    // SearchScreen(),lib/main_layout.dart
     // ProfilePage(),
   ];
 
@@ -161,7 +161,10 @@ class _MainLayoutState extends State<MainLayout> {
             icon: Icon(Iconsax.book),
             label: "My Booking",
           ),
-          BottomNavigationBarItem(icon: Icon(Iconsax.search_favorite), label: "Search"),
+          BottomNavigationBarItem(
+            icon: Icon(Iconsax.search_favorite),
+            label: "Search",
+          ),
           BottomNavigationBarItem(icon: Icon(Iconsax.user), label: "Profile"),
         ],
       ),

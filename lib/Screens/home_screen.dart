@@ -5,6 +5,7 @@ import 'package:grand_hotel/models/property_model.dart';
 import 'package:grand_hotel/widgets/my_crausel.dart';
 import 'package:grand_hotel/widgets/my_map.dart';
 import 'package:grand_hotel/widgets/property_card.dart';
+import 'package:grand_hotel/widgets/recommendation_crad.dart';
 import 'package:grand_hotel/widgets/tabs.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -117,7 +118,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     GestureDetector(
                       onTap: () {},
                       child: GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AllProperty())),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AllProperty(),
+                          ),
+                        ),
                         child: Text(
                           'See All',
                           style: TextStyle(color: kSurfaceColor),
@@ -189,6 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: filteredProperties.length,
                   itemBuilder: (context, index) {
                     return PropertyListCard(
+                      propertyId: filteredProperties[index].id,
                       imgUrl: NetworkImage(filteredProperties[index].images[0]),
                       name: filteredProperties[index].name,
                       location: filteredProperties[index].location,
@@ -198,7 +205,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-
 
               const SizedBox(height: 30),
 
@@ -217,13 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'Open Map',
-                        style: TextStyle(color: kSurfaceColor),
-                      ),
-                    ),
+                    Text('Open Map', style: TextStyle(color: kSurfaceColor)),
                   ],
                 ),
               ),
@@ -232,8 +232,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: MyMap(),
-              )
+                child: MyMap(height: 180),
+              ),
+
+              SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'More Available Stays',
+                      style: TextStyle(
+                        fontFamily: 'Inter_Medium',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AllProperty()),
+                      ),
+                      child: Text(
+                        'See All',
+                        style: TextStyle(
+                          color: kSurfaceColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 15),
+              RecommendationCrad(),
             ],
           ),
         ),

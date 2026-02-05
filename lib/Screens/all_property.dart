@@ -87,6 +87,7 @@ class _AllPropertyState extends State<AllProperty> {
                   itemCount: filteredProperties.length,
                   itemBuilder: (context, index) {
                     return AnotherPropertyCard(
+                      propertyId: filteredProperties[index].id,
                       imgUrl: NetworkImage(filteredProperties[index].images[0]),
                       name: filteredProperties[index].name,
                       location: filteredProperties[index].location,

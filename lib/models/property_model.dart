@@ -69,7 +69,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Emily Johnson",
-            profileImage: "https://randomuser.me/api/portraits/women/44.jpg",
+            profileImage: "assets/user1.jpg",
             comment: "Absolutely stunning villa! The ocean view was unreal.",
           ),
         ],
@@ -103,7 +103,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Sarah Lee",
-            profileImage: "https://randomuser.me/api/portraits/women/68.jpg",
+            profileImage: "assets/user2.jpg",
             comment: "Excellent service and very comfortable rooms.",
           ),
         ],
@@ -135,7 +135,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Lukas Meyer",
-            profileImage: "https://randomuser.me/api/portraits/men/45.jpg",
+            profileImage: "assets/user3.jpg",
             comment: "Great location and very clean apartment.",
           ),
         ],
@@ -167,7 +167,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Rohit Sharma",
-            profileImage: "https://randomuser.me/api/portraits/men/12.jpg",
+            profileImage: "assets/user4.jpg",
             comment: "Calm, beautiful and perfect for a getaway.",
           ),
         ],
@@ -197,7 +197,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Ahmed Khan",
-            profileImage: "https://randomuser.me/api/portraits/men/76.jpg",
+            profileImage: "assets/user5.jpg",
             comment: "One of the best luxury hotels I’ve stayed in.",
           ),
         ],
@@ -227,7 +227,7 @@ class PropertyModel {
         reviews: [
           ReviewModel(
             userName: "Kenji Tanaka",
-            profileImage: "https://randomuser.me/api/portraits/men/29.jpg",
+            profileImage: "assets/user6.jpg",
             comment: "Small but very well designed and clean.",
           ),
         ],

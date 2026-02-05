@@ -145,6 +145,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemBuilder: (context, index) {
                     final property = filteredProperties[index];
                     return PropertyListCard(
+                      propertyId: property.id,
                       imgUrl: NetworkImage(property.images.first),
                       name: property.name,
                       location: property.location,

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MyMap extends StatefulWidget {
-  const MyMap({super.key});
+  final double height;
+  const MyMap({super.key, required this.height});
 
   @override
   State<MyMap> createState() => _MyMapState();
@@ -33,9 +34,12 @@ class _MyMapState extends State<MyMap> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: SizedBox(
-        height: 180, 
+        height: widget.height,
         child: GoogleMap(
-          initialCameraPosition: CameraPosition(target: randomLocation, zoom: 10),
+          initialCameraPosition: CameraPosition(
+            target: randomLocation,
+            zoom: 10,
+          ),
           markers: {
             Marker(
               markerId: const MarkerId('random_place'),
