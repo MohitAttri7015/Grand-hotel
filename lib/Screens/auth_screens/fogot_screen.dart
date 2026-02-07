@@ -87,7 +87,7 @@ class _FogotScreenState extends State<FogotScreen> {
         isLoading = true;
       });
 
-      await authServices.value.resetPassword(email: emailController.text);
+      await authService.resetPassword(email: emailController.text);
 
       showSuccessDialog(
         // ignore: use_build_context_synchronously

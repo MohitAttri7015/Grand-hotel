@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grand_hotel/Screens/home_screen.dart';
+import 'package:grand_hotel/Screens/my_booking.dart';
+import 'package:grand_hotel/Screens/profile_screen.dart';
 import 'package:grand_hotel/Screens/search_screen.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/services/auth_service.dart';
@@ -17,14 +19,13 @@ class _MainLayoutState extends State<MainLayout> {
 
   final pages = const [
     HomeScreen(),
-    // SearchPage(),
-    // SearchScreen(),lib/main_layout.dart
-    // ProfilePage(),
+    MyBooking(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final user = authServices.value.currentUser;
+    final user = authService.currentUser;
     return Scaffold(
       appBar: _currentIndex == 0
           ? PreferredSize(
@@ -160,10 +161,6 @@ class _MainLayoutState extends State<MainLayout> {
           BottomNavigationBarItem(
             icon: Icon(Iconsax.book),
             label: "My Booking",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Iconsax.search_favorite),
-            label: "Search",
           ),
           BottomNavigationBarItem(icon: Icon(Iconsax.user), label: "Profile"),
         ],

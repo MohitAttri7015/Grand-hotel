@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_hotel/Screens/auth_screens/fogot_screen.dart';
 import 'package:grand_hotel/Screens/auth_screens/sign_up_screen.dart';
+import 'package:grand_hotel/auth_layout.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/services/auth_service.dart';
 import 'package:grand_hotel/widgets/my_button.dart';
@@ -58,34 +59,32 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void showErr() {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: const Text(
+          "Invalid Input",
+          style: TextStyle(
+            fontFamily: 'Inter_Medium',
+            fontWeight: FontWeight.bold,
           ),
-          title: const Text(
-            "Invalid Input",
-            style: TextStyle(
-              fontFamily: 'Inter_Medium',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          content: Text(
-            errorText!,
-            style: const TextStyle(fontFamily: 'Inter_Medium', fontSize: 14),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text(
-                "OK",
-                style: TextStyle(fontFamily: 'Inter_Medium'),
-              ),
-            ),
-          ],
         ),
-      );
+        content: Text(
+          errorText!,
+          style: const TextStyle(fontFamily: 'Inter_Medium', fontSize: 14),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text(
+              "OK",
+              style: TextStyle(fontFamily: 'Inter_Medium'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void login() async {
@@ -100,18 +99,24 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = true;
       });
 
-      await authServices.value.signIn(
+      await authService.signIn(
         email: emailController.text,
         password: pswrdController.text,
       );
 
+      if (!mounted) return;
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => const AuthLayout()),
+        (route) => false,
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorText = e.message ?? 'Error while login account using firebase.';
         showErr();
       });
     } finally {
-       if (mounted) {
+      if (mounted) {
         setState(() => isLoading = false);
       }
     }
@@ -194,10 +199,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 10),
 
                 GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FogotScreen()),
-                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FogotScreen()),
+                    );
+                    setState(() {});
+                  },
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -241,6 +249,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                           color: kSurfaceColor,
                           fontFamily: 'Inter_Medium',
+                          fontSize: 13,
                         ),
                       ),
                     ),

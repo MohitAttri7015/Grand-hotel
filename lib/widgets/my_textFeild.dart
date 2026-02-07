@@ -1,6 +1,4 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MyTextfeild extends StatefulWidget {
@@ -32,7 +30,7 @@ class _MyTextfeildState extends State<MyTextfeild> {
         hintText: widget.hintText,
         hintStyle: const TextStyle(fontSize: 13, color: Colors.grey),
         filled: true,
-        fillColor: elemntBgColor,
+        fillColor: const Color.fromRGBO(246, 246, 246, 1),
         contentPadding: const EdgeInsets.symmetric(
           vertical: 14,
           horizontal: 16,

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:grand_hotel/auth_layout.dart';
 import 'package:grand_hotel/constants/app_constants.dart';
 import 'package:grand_hotel/services/auth_service.dart';
 import 'package:grand_hotel/widgets/my_button.dart';
@@ -102,10 +103,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
         isLoading = true;
       });
 
-      await authServices.value.createAccount(
+      await authService.createAccount(
         email: emailController.text,
         password: pswrdController.text,
         username: nameController.text
+      );
+
+      if (!mounted) return;
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => const AuthLayout()),
+        (route) => false,
       );
 
       

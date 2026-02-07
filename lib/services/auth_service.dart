@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
-ValueNotifier<AuthService> authServices = ValueNotifier(AuthService());
+final AuthService authService = AuthService();
 
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;

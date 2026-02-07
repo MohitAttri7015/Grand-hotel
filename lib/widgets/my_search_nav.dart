@@ -5,10 +5,20 @@ import 'package:grand_hotel/widgets/draggable_sheet.dart';
 import 'package:iconsax/iconsax.dart';
 
 class MySearchNav extends StatelessWidget {
+  final String text;
+  final bool showBackButton;
   final ValueChanged<String> onChanged;
-  final Function(FilterData) onFilterApplied;
+  final Function(FilterData)? onFilterApplied;
+  final bool showFilter;
 
-  const MySearchNav({super.key, required this.onChanged, required this.onFilterApplied});
+  const MySearchNav({
+    super.key,
+    required this.text,
+    required this.showBackButton,
+    required this.onChanged,
+    this.onFilterApplied,
+    required this.showFilter,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +27,16 @@ class MySearchNav extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(Iconsax.backward),
-            ),
+            if (showBackButton)
+              IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(Iconsax.backward),
+              )
+            else
+              Opacity(opacity: 0, child: Icon(Iconsax.backward)),
             Text(
-              "Search",
+              text,
               style: TextStyle(fontFamily: 'Inter_Medium', fontSize: 16),
             ),
             IconButton(
@@ -68,30 +81,32 @@ class MySearchNav extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
-              Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: GestureDetector(
-                  onTap: () async {
-                    final filters = showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => const DraggableSheet(),
-                    );
-                    onFilterApplied(await filters); 
-                                    },
-                  child: const Icon(
-                    Iconsax.filter,
-                    size: 20,
-                    color: thirdTextColor,
+              if (showFilter) ...[
+                const SizedBox(width: 10),
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: GestureDetector(
+                    onTap: () async {
+                      final filters = showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        builder: (_) => const DraggableSheet(),
+                      );
+                      onFilterApplied?.call(await filters);
+                    },
+                    child: const Icon(
+                      Iconsax.filter,
+                      size: 20,
+                      color: thirdTextColor,
+                    ),
                   ),
                 ),
-              ),
+              ],
             ],
           ),
         ),

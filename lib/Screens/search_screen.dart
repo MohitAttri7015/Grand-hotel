@@ -115,8 +115,11 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Column(
             children: [
               MySearchNav(
+                showFilter: true,
                 onChanged: _onSearchChanged,
                 onFilterApplied: _applyFilters,
+                text: "Search",
+                showBackButton: true
               ),
               const SizedBox(height: 30),
 
